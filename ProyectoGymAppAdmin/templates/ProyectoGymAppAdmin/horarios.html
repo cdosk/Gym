@@ -1,0 +1,53 @@
+{% extends "ProyectoGymAppAdmin/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title> Registrar Cliente</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no. initial-scale=1.0,
+    maximum-scale=1.0, minimum-scale=1.0">
+    <link href="{% static 'ProyectoGymAppAdmin/css/horarios .css' %}" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <div class="contenedor">
+        <form action="" class="form" method="POST">
+            <div class="form-header">
+                <h1 class="form-title">M<span>odificar horarios</span></h1>
+            </div>
+            
+            <label for="nombre" class="form-label">Nombres de la clase:</label>
+            <input type="text" id="nombre_clase" class="form-input" placeholder="">
+          
+
+            <label for="peso" class="form-label">Duracion:</label>
+            <input type="text" id="duracion" class="form-input" placeholder="">
+
+            <input type="date"> <input type="time">
+       
+
+            <label for="horario" class="form-label">Repetir cada:</label>
+                <label for="horlunes" class="form-label"><input type="checkbox" class="form-checkbox" id="horlunes" value="principiante_checkbox"> Lunes</label>
+                <label for="hormartes" class="form-label" ><input type="checkbox" class="form-checkbox" id="hormartes" value="intermedio_checkbox"> Martes</label>
+                <label for="hormiercoles" class="form-label"><input type="checkbox" class="form-checkbox" id="hormiercoles" value="avanzado_checkbox"> Miercoles</label><br/>
+                <label for="horjueves" class="form-label"><input type="checkbox" class="form-checkbox" id="horjueves" value="avanzado_checkbox"> Jueves</label><br/>
+                <label for="horviernes" class="form-label"><input type="checkbox" class="form-checkbox" id="horviernes" value="avanzado_checkbox"> Viernes</label><br/>
+                <label for="horsabado" class="form-label"><input type="checkbox" class="form-checkbox" id="horsabado" value="avanzado_checkbox"> Sabado</label><br/>
+                <label for="hordomingo" class="form-label"><input type="checkbox" class="form-checkbox" id="hordomingo" value="avanzado_checkbox"> Domingo</label><br/> 
+        
+
+            <input type="Guardar" class="btn-guardar" value="Guardar">
+        </form>
+    </div>
+
+</body>
+
+</html>
+
+
+{% endblock %}
