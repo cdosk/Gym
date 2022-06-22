@@ -1,0 +1,31 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block localStyles %}
+{% endblock %}
+
+{% block content %}
+<div class="container bg-white p-5">
+
+  <h1>Artículos de Entrenamiento</h1>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4 articulo-container">
+    {% for articulo in articulos %}
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="{{ articulo.image.url }}" class="card-img-top" alt="article photo">
+        <div class="card-body">
+          <h5 class="card-title">{{ articulo.title }}</h5>
+          <i>{{ articulo.author }}</i>
+          <hr>
+          <p class="card-text" style="height: 90px; overflow: hidden;">{{ articulo.content }}</p>
+          <a href="{% url 'Articulo' articulo.pk %}" class="btn btn-primary">Leer más</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

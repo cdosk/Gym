@@ -1,0 +1,43 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block localStyles %}
+<link href="{% static 'ProyectoGymAppCliente/css/listar_ejercicios.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="ejercicios-container">
+  <a href="{% url 'Ejercicios' %}">
+    <- Regresar</a> <br> <br>
+      {% if not ejercicios %}
+      <div class="alert alert-danger" role="alert">
+        <h1>Lo sentimos, no se encontraron coincidencias</h1>
+      </div>
+      {% endif %}
+
+      {% for e in ejercicios %}
+
+      <div>
+        <h1>{{ e.name.title }}</h1>
+        <p><strong>Difficultad: </strong>{{ e.get_difficulty_display }}</p>
+        <div class="content-media">
+          <video src={{ e.video }} controls loop></video>
+          <div class="muscles">
+            {% for m in e.muscles_involved.all %}
+            <div>
+              <h5>{{ m.name.title }}</h5>
+              <img src="{{ m.img }}" alt="imagen {{ m.name }}">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <h3>Descripción</h3>
+        <p class=" description">{{ e.description }}</p>
+        <hr>
+      </div>
+      {% endfor %}
+</div>
+
+{% endblock %}

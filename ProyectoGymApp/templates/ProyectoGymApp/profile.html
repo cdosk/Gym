@@ -1,0 +1,77 @@
+{% extends "ProyectoGymApp/base.html" %}
+
+{% load static %}
+
+{% block styles %}
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 card">
+      <div class="card-header" style="text-align: center;">
+        <h2 class="fw-bold">Perfil</h2>
+      </div>
+      <form method="post" style="background-color: white;" class="card-body text-center">
+        {% csrf_token %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+          {{message}}
+        </div>
+        {% endfor %}
+
+        <img src="{{ user.profile.picture.url }}" alt="profile picture" class="mb-4">
+
+        <div class="mb-3">
+          {{ form.first_name.label }}
+          <input type="text" name="first_name" id="{{ form.first_name.id_for_label }}" value="{{ user.first_name }}">
+        </div>
+
+        <div class="mb-3">
+          {{ form.last_name.label }}
+          <input type="text" name="last_name" id="{{ form.last_name.id_for_label }}" value="{{ user.last_name }}">
+        </div>
+
+        <div class="mb-3">
+          {{ form.phone_number.label }}
+          <input type="text" name="phone_number" id="{{ form.phone_number.id_for_label }}"
+            value="{{ user.profile.phone_number }}">
+        </div>
+
+        <div class="mb-3">
+          {{ form.email.label }}
+          <input type="text" name="email" id="{{ form.email.id_for_label }}" value="{{ user.email }}">
+        </div>
+
+        <div class="mb-3">
+          <label for="plane">Plan de entrenamiento:</label>
+          {% if evaluacion.training_plan %}
+          <a id="plane"
+            href="{% url 'MostrarPlanEntrenamiento' evaluacion.training_plan.pk %}">{{ evaluacion.training_plan.name }}</a>
+          {% else %}
+          <input type="text" name="PlanEntrenamiento" id="plane" value="No asignado aún" disabled>
+          {% endif %}
+
+        </div>
+
+        <div class="mb-3">
+          <label for="plann">Plan nutricional:</label>
+          {% if evaluacion.nutritional_plan %}
+          <a id="plann"
+            href="{% url 'MostrarPlanNutricional' evaluacion.nutritional_plan.pk evaluacion.duration initialdate %}">{{ evaluacion.nutritional_plan.name }}</a>
+          {% else %}
+          <input type="text" name="PlanNutricional" id="plann" value="No asignado aún" disabled>
+          {% endif %}
+        </div>
+
+        <input type="submit" value="Guardar" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

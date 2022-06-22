@@ -1,0 +1,123 @@
+{% extends "ProyectoGymAppAdmin/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title> Formulario de Registro</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no. initial-scale=1.0,
+    maximum-scale=1.0, minimum-scale=1.0">
+    <link href="{% static 'ProyectoGymApp/css/styles.css' %}" rel="stylesheet">
+
+    <style>
+        
+        #messages{
+			background-color: grey;
+			color: #fff;
+			padding: 10px;
+			margin-top: 10px;
+		}
+
+        .boton{
+            width: 30%;
+            margin: auto;
+            background-color: aquamarine;
+        }
+
+        .contenedor{
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        body, .fw-bold{
+            font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+            font-weight: bolder;
+        }
+
+        .card{
+            margin-top: 7%;
+            margin-bottom: 7%;
+            box-shadow: 0 0 150px -10px white;
+            background-color: rgb(211, 211, 211);
+        }
+
+        .card-header{
+            background-color: rgb(65, 65, 65);
+            color: white;
+            text-align: center;
+        }
+
+        .form-control{
+            box-sizing: border-box;
+            background: none;
+            outline: none;
+            resize: none;
+            border: 0;
+            transition: all .3s;
+            border-bottom: 2px solid black;
+        }
+
+	</style>
+
+</head>
+<body style="margin: 0; padding: 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;">
+    <section class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 contenedor">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="fw-bold">AGREGAR RECETA</h2>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="" class="form-label">NOMBRE DEL PLATO</label>
+                                    <input type="text" Required name="title" class="form-control">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">INGREDIENTES</label>
+                                    <textarea name="ingredients" style="resize:vertical;" class="form-control" rows="6" name="comment" required placeholder=
+                                    "- Ingrediente 1
+- Ingrediente 2
+- Ingrediente 3
+.....
+                                    "></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">PREPARACIÓN</label>
+                                    <textarea name= "preparation" style="resize:vertical;" class="form-control" rows="6" name="comment" required placeholder=
+                                    "1. Primer paso
+2. Segundo paso
+3. Tercer paso
+.....
+                                    "></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">IMAGEN</label>
+                                    <input type="file" Required name="image" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-primary">GUARDAR</button>
+                                <div class="d-flex justify-content-center links btn login_btn boton">
+                                    <a href="{% url 'Mostrarrecetas' %}" class="ml-2">Mostrar Recetas</a>
+                                </div>
+                                {% for message in messages %}
+                                    <p id="messages"> {{message}} </p>
+                                {% endfor %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
+
+{% endblock %}

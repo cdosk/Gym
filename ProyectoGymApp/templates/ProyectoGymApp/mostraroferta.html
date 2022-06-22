@@ -1,0 +1,40 @@
+{% extends "ProyectoGymApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    .card{
+        display: inline-flex;
+        margin: 1%;
+    }
+
+    .btn{
+        margin-left: 10%;
+    }
+
+</style>
+{% for oferta in dataoferta %}
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+            <img class="card-img-top" src="{{oferta.image.url}}" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <h2 class="card-title" style="font-weight: bold; text-transform: uppercase;">{{oferta.title}}</h3>
+            <p class="card-text">{{oferta.description}}</p>
+            <p class="card-text" style="font-weight: bold">FECHA DE INICIO DE OFERTA:</p>
+            <p class="card-text">{{oferta.startDate}}</p>
+            <p class="card-text" style="font-weight: bold">FECHA DE FIN DE OFERTA:</p>
+            <p class="card-text">{{oferta.endDate}}</p>
+            <p class="card-text" style="font-weight: bold">PRECIO:</p>
+            <p class="card-text">S/. {{oferta.price}}</p>
+            <a href="{% url 'Editoferta' oferta.id %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'Deleteoferta' oferta.id %}" class="btn btn-danger">Eliminar</a>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+{% endblock %}

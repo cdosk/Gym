@@ -1,0 +1,44 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block localStyles %}
+<link href="{% static 'ProyectoGymAppCliente/css/mostrar_plan_nutricional.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="mostrar-container">
+  <h2>{{ plan.name }}</h2>
+  <br>
+  {% for mes in meses %}
+  <h3>Mes {{ mes }}</h3>
+  <table class="table" style="background-color: white;">
+    <thead>
+      <tr>
+        <th scope="col" class="table-info">#</th>
+        <th scope="col" class="table-info" colspan="7">Días</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for semana in semanas %}
+      <tr>
+        <th scope="row" class="table-dark">{{ forloop.counter }}</th>
+        {% for day in semana.nums %}
+        {% for pland in plans_date %}
+        {% if pland.month == mes and pland.day == day %}
+        <td {% if pland.date == today %} style="background-color: rgba(24, 64, 8); color:white" {% endif %}>
+          <a href="{% url 'MostrarPlanNutricionalXdia' plan.pk pland.date %}" {% if pland.date == today %}
+            style="color:white" {% endif %}>{{ day }}</a>
+          <small>{{ pland.date }}</small>
+        </td>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endfor %}
+</div>
+
+{% endblock %}

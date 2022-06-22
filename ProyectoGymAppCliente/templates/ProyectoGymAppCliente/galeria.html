@@ -1,0 +1,44 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    .card{
+        display: inline-flex;
+        margin: 1%;
+        max-width: 30rem;
+        width: 30%;
+    }
+
+    .btn{
+        margin-left: 11%;
+    }
+
+    .subir{
+        margin-top: 2%;
+        margin-bottom: 2%;
+        margin-left: 40%;
+    }
+
+</style>
+
+{% for galeria in datagaleria %}
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+            <img class="card-img-top" src="{{galeria.image.url}}" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <h2 class="card-title" style="font-weight: bold; text-transform: uppercase;">{{galeria.title}}</h3>
+            <p class="card-text">{{galeria.description}}</p>
+            <a href="{% url 'Editgaleria' galeria.id %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'Deletegaleria' galeria.id %}" class="btn btn-danger">Eliminar</a>
+        </div>
+    </div>
+{% endfor %}
+<div class="subir">
+    <a href="{% url 'Uploadgaleria' %}" class="btn btn-primary">Subir foto</a>
+</div>
+
+{% endblock %}

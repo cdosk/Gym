@@ -1,0 +1,73 @@
+{% extends "ProyectoGymAppAdmin/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+
+        body, .fw-bold{
+            font-family: Vegur, 'PT Sans', Verdana, sans-serif;
+            font-weight: bolder;
+        }
+
+        .card{
+            margin-top: 7%;
+            margin-bottom: 7%;
+            box-shadow: 0 0 150px -10px white;
+            background-color: rgb(211, 211, 211);
+        }
+
+        .card-header{
+            background-color: rgb(65, 65, 65);
+            color: white;
+            text-align: center;
+        }
+
+        .form-control{
+            box-sizing: border-box;
+            background: none;
+            outline: none;
+            resize: none;
+            border: 0;
+            transition: all .3s;
+            border-bottom: 2px solid black;
+        }
+
+</style>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 card">
+      <div class="card-header" style="text-align: center;">
+        <h2 class="fw-bold">Artículos de Entrenamiento</h2>
+      </div>
+      <form action="" method="POST" enctype="multipart/form-data" class="card-body">
+        {% csrf_token %}
+        {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+          {{message}}
+        </div>
+        {% endfor %}
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Título</label>
+          <input id="titulo" type="text" required name="title" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="autor" class="form-label">Autor</label>
+          <input id="autor" type="text" required name="author" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="contenido" class="form-label">Artículo</label>
+          <textarea name="content" id="contenido" cols="1" rows="10" class="form-control" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="imagen" class="form-label">Imágen</label>
+          <input id="imagen" type="file" required name="image" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary ">GUARDAR</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

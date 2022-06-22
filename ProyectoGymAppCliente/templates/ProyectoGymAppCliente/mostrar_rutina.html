@@ -1,0 +1,48 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block localStyles %}
+<link href="{% static 'ProyectoGymAppCliente/css/listar_ejercicios.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="ejercicios-container">
+  <a href="{% url 'MostrarPlanEntrenamiento' pk_plan %}">
+    <- Regresar</a> <br> <br>
+
+      {% for e in rutina_ejercicios %}
+
+      <div>
+        <h1>{{ e.ejercicio.name.title }}</h1>
+        <p><strong>Difficultad: </strong>{{ e.ejercicio.get_difficulty_display }}</p>
+        <p>
+          <strong>Sets: </strong>
+          {{ e.sets }} sets | <strong>Repeticiones: </strong>
+          {% if e.repeticiones %}
+          {{ e.repeticiones }} repeticiones
+          {% endif %}
+          {% if e.fallo %}
+          hasta el fallo
+          {% endif %}
+        </p>
+        <div class="content-media">
+          <video src={{ e.ejercicio.video }} controls loop></video>
+          <div class="muscles">
+            {% for m in e.ejercicio.muscles_involved.all %}
+            <div>
+              <h5>{{ m.name.title }}</h5>
+              <img src="{{ m.img }}" alt="imagen {{ m.name }}">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <h3>Descripción</h3>
+        <p class=" description">{{ e.ejercicio.description }}</p>
+        <hr>
+      </div>
+      {% endfor %}
+</div>
+
+{% endblock %}

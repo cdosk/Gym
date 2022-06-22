@@ -1,0 +1,106 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    .container .card {
+        width: 330%;
+        height: 430px;
+        border-radius: 8px;
+        box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        margin: 20px;
+        text-align: center;
+        transition: all 0.25s;
+    }
+
+    .container .card:hover {
+        transform: translate(-15px);
+        box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .container .card h4 {
+        font-weight: 600;
+    }
+
+    .container .card p {
+        padding: 0 1rem;
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    .container .card a {
+        font-weight: 500;
+        text-decoration: none;
+        color: #3498db;
+    }
+
+    .card-text {
+        color: black;
+        text-align: justify;
+        align-content: center;
+
+    }
+
+    .card-title {
+        color: black;
+
+    }
+</style>
+<div class="card">
+    <div class="card-header">
+        <div class="row" style="margin: 30px;">
+            <div class="col-md-12 text-center">
+                <strong class="card-title">
+                    <h2>Plan Nutricional</h2>
+                </strong>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="">
+                        <div class="card">
+                            <!-- <img class = "card-img-top" src = "{{ info.image.url }}" alt="Card image cap"> -->
+                            <div class="card-body">
+
+                                <h4 class="card-title mb-3 text-center col-md-12" style="font-weight:bold;">Desayuno
+                                </h4>
+                                <li class="card-text">Pollo</li>
+                                <li class="card-text">Arroz</li>
+                                <li class="card-text">Palta</li>
+                                <li class="card-text">Brocoli</li>
+                                <a class="card-text" style="font-weight:bold;">Subir foto</a>
+                                <input type="file" Required name="image" class="form-control">
+                                <!-- <h4 class = "card-text mb-3 text-center col-md-12" style="font-weight:bold">¿Cómo consumirlo?</h4> -->
+                                <!-- <p class = "card-text">{{ info.description_cons }}</p> -->
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <!-- <img class = "card-img-top" src = "{{ info.image.url }}" alt="Card image cap"> -->
+                            <div class="card-body">
+                                <h4 class="card-title mb-3 text-center col-md-12" style="font-weight:bold;">Almuerzo
+                                </h4>
+                                <li class="card-text">Huevo</pli>
+                                <li class="card-text">Pan</li>
+                                <li class="card-text">Papaya</li>
+                                <li class="card-text">Almendras</li>
+                                <a class="card-text" style="font-weight:bold;">Subir foto</a>
+                                <input type="file" Required name="image" class="form-control">
+                                <!-- <h4 class = "card-text mb-3 text-center col-md-12" style="font-weight:bold">¿Cómo consumirlo?</h4> -->
+                                <!-- <p class = "card-text">{{ info.description_cons }}</p> -->
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

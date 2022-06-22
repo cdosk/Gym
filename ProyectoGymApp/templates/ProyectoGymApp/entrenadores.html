@@ -1,0 +1,66 @@
+{% extends "ProyectoGymApp/base.html" %}
+
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'ProyectoGymApp/css/entrenadores.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="equipo-container">
+
+  <h1>Entrenadores</h1>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4 entrenadores-container">
+    {% for entrenador in entrenadores %}
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="{{ entrenador.picture }}" class="card-img-top" alt="profile photo">
+        <div class="card-body">
+          <h5 class="card-title">{{ entrenador.name }}</h5>
+          <i>{{ entrenador.surname }}</i>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Cel:</strong>
+              <span>{{ entrenador.mobileNumber }}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Email:</strong>
+              <span>{{ entrenador.email }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+  <h2>Nutricionistas</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4 nutricionistas-container">
+    {% for nutricionista in nutricionistas %}
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="{{ nutricionista.picture }}" class="card-img-top" alt="profile photo">
+        <div class="card-body">
+          <h5 class="card-title">{{ nutricionista.name }}</h5>
+          <i>{{ nutricionista.surname }}</i>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Cel:</strong>
+              <span>{{ nutricionista.mobileNumber }}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Email:</strong>
+              <span>{{ nutricionista.email }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+{% endblock %}

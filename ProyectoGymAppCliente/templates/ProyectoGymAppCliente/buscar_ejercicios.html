@@ -1,0 +1,32 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block localStyles %}
+<link href="{% static 'ProyectoGymAppCliente/css/buscar_ejercicios.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" class="explorar-form">
+  {% csrf_token %}
+  <h1>Explorar ejercicios</h1>
+  {{ form.category.label_tag }}
+  <div class="category">
+    {% for radio in form.category  %}
+    {{ radio.tag }}
+    <label for="{{ radio.id_for_label }}">
+      {{ radio.choice_label }}
+    </label>
+    {% endfor %}
+  </div>
+  <hr>
+  <div class="muscles-involved">
+    {{ form.muscles_involved.label_tag }}
+    {{ form.muscles_involved }}
+  </div>
+  <button type="submit" class="btn btn-info">Buscar</button>
+
+</form>
+
+{% endblock %}

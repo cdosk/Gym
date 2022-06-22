@@ -1,0 +1,14 @@
+.equipo-container {
+  background-color: aliceblue;
+  width: 80%;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.entrenadores-container {
+  margin-block-end: 70px;
+}
+
+.nutricionistas-container {
+  margin-block-end: 40px;
+}

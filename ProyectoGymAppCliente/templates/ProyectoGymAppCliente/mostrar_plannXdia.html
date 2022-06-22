@@ -1,0 +1,40 @@
+{% extends "ProyectoGymApp/base.html" %}
+
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'ProyectoGymAppCliente/css/mostrar_plan_nutricional.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div style="background-color: white;">
+  <h1>{{ date }}</h1> <br>
+  {% for num_comida in num_comidas %}
+  <h2>Comida {{ forloop.counter }}</h2>
+  <div>
+    <div style="display:inline-block;">
+      {% for comida in comidas %}
+      {% for seg in seguimiento %}
+      {% if comida.num_comida == num_comida and seg.comida.pk == comida.pk %}
+      <label style="display: block;">
+        <input type="checkbox" disabled {% if seg.completado %} checked {% endif %}>
+        {{ comida.lista_ingredientes }}
+      </label>
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </div>
+    {% if today == date %}
+    <form action="" method="POST" style="display: inline-block;">
+      {% csrf_token %}
+      <div style="width: 100px; height: 100px; background: gray;"></div>
+      <a class="card-text" style="font-weight:bold;">Subir y verificar foto</a>
+      <input type="file" Required name="image" class="form-control" value="Subir y verificar foto" accept=".jpg">
+      <input type="submit" value="Enviar">
+    </form>
+    {% endif %}
+  </div>
+  <hr>
+  {% endfor %}
+</div>
+{% endblock %}

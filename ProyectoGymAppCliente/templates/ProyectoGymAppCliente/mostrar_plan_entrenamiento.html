@@ -1,0 +1,42 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block localStyles %}
+<link href="{% static 'ProyectoGymAppCliente/css/mostrar_plan.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="mostrar-plan-container">
+  <h2>{{ plan }} </h2>
+
+  <img src="{{ plan.img }}" class="img-thumbnail" alt="plan picture" style="width: 100px;">
+
+  <br>
+  <table class="table" style="background-color: white;">
+    <thead>
+      <tr>
+        <th scope="col" class="table-info">#</th>
+        {% for day in days %}
+        <th scope="col" class="table-info">{{ day }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for semana in semanas %}
+      <tr>
+        <th scope="row" class="table-dark">{{ semana }}</th>
+        {% for day in days %}
+        {% for rutina in rutinas %}
+        {% if rutina.get_days_of_week_display == day and rutina.week == semana %}
+        <td><a href="{% url 'MostrarRutina' plan.id rutina.rutina.id %}">{{ rutina.rutina.name }}</a></td>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block localStyles %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 card">
+      <div class="card-header" style="text-align: center;">
+        <h2 class="fw-bold">Planes de entrenamiento recomendados</h2>
+        <p>Estos los planes de entrenamiento recomendados para ti, escoge el que más te guste</p>
+      </div>
+      <form method="post" style="background-color: white;" class="card-body text-center">
+        {% csrf_token %}
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          {% for plan_entrenamiento in planes_entrenamiento %}
+          <div class="col">
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="{{ plan_entrenamiento.img }}" alt="plan picture" class="card-img-top">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ plan_entrenamiento.name }}</h5>
+                    <p class="card-text">{{ plan_entrenamiento.description }}</p>
+                    <p class="card-text">Nivel: <i>{{ plan_entrenamiento.get_level_display }}</i></p>
+                    <p class="card-text">Meta: <i>{{ plan_entrenamiento.get_objective_display }}</i></p>
+                    <input type="radio" id="{{ plan_entrenamiento.pk }}" name="planes_de_entrenamiento"
+                      value="{{ plan_entrenamiento.pk }}" {% if forloop.first %} checked {% endif %}>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <input type="submit" value="Enviar" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

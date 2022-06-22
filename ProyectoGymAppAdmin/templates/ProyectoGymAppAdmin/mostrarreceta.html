@@ -1,0 +1,39 @@
+{% extends "ProyectoGymAppAdmin/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    .card{
+        display: inline-flex;
+        margin: 1%;
+        max-width: 30rem;
+        width: 30%;
+    }
+
+    .btn{
+        margin-left: 21%;
+    }
+
+</style>
+{% for receta in datareceta %}
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+        <div class="card-header">
+            <img class="card-img-top" src="{{receta.image.url}}" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <h2 class="card-title" style="font-weight: bold; text-transform: uppercase;">{{receta.title}}</h3>
+            <p class="card-text" style="font-weight: bold">INGREDIENTES:</p>
+            <textarea name="ingredients" disabled="disabled" style="resize:vertical;" class="form-control" rows="6" name="comment" required>{{receta.ingredients}}</textarea> <br>
+            <p class="card-text" style="font-weight: bold">PREPARACIÓN:</p>
+            <textarea name="ingredients" disabled="disabled" style="resize:vertical;" class="form-control" rows="6" name="comment" required>{{receta.preparation}}</textarea> <br>           
+            <a href="{% url 'Editarreceta' receta.id %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'Deletereceta' receta.id %}" class="btn btn-danger">Eliminar</a>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+{% endblock %}

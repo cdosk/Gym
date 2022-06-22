@@ -1,0 +1,83 @@
+.explorar-form {
+  background-color: white;
+  padding: 50px;
+  margin: 100px auto;
+  width: 40%;
+  min-width: 400px;
+}
+
+h1 {
+  margin-block-end: 30px;
+}
+
+/* =================== RADIO BUTTONS - CATEGORY*/
+
+.category {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category label {
+  border: 1px solid rgba(24, 64, 8, 0.8);
+  padding: 5px 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.category label:hover {
+  background-color: rgba(24, 64, 8, 0.8);
+  color: white;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked+label {
+  background-color: rgba(24, 64, 8, 0.8);
+  color: white;
+
+}
+
+
+/* ================= */
+
+/* ============================ INPUT SELECT - MUSCLES*/
+.muscles-involved {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.muscles-involved select {
+  max-width: 300px;
+  align-self: center;
+  display: inline-block;
+  cursor: pointer;
+  padding: 7px 10px;
+  height: 42px;
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+  background: #f0f0f0;
+  color: black;
+  font-size: 1em;
+  font-family: 'Quicksand',
+    sans-serif;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.muscles-involved select:hover {
+  background: rgba(24, 64, 8, 0.8);
+  color: white;
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 50px auto 0;
+}

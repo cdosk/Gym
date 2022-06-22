@@ -1,0 +1,21 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block localStyles %}
+<link href="{% static 'ProyectoGymAppCliente/css/listar_ejercicios.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container bg-white p-5">
+  <a href="{% url 'ArticulosEntrenamiento' %}">
+    <- Regresar </a> <br> <br>
+      <h1>{{ articulo.title }}</h1>
+      <sub>{{ articulo.author }}</sub>
+      <br> <br> <br>
+      <p>{{ articulo.content }}</p>
+      <img src="{{ articulo.image.url }}" alt="article image" class="w-75">
+</div>
+
+{% endblock %}

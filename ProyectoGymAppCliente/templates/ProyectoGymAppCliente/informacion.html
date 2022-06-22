@@ -1,0 +1,78 @@
+{% extends "ProyectoGymAppCliente/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<head>
+<link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+</head>
+<html>
+
+<style>
+    .content-table{
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+        margin: auto;
+    }
+
+    .content-table thead tr{
+        background-color: rgba(24, 64, 8);
+        color: white;
+        text-align: left;
+        font-weight: bold;
+    }
+    .content-table td{
+        padding: 12px 15px;
+        background-color: rgb(209, 220, 212);
+    }
+    .content-table tbody tr{
+        border-bottom: 1px solid black;
+    }
+    .content-table tbody tr:nth-of-type(even){
+        background-color: white;
+    }
+    .content-table tbody tr:last-of-type{
+        border-bottom: white;
+    }
+    
+</style>
+<body>
+    <div class = "card">
+        <div class = "card-header">
+            <div class = "row" style="margin: 30px;">
+                <div class = "col-md-12 text-center">
+                    <strong class = "card-title">
+                        <h2>Información Nutricional</h2>
+                        <p style="text-align: justify;">Proteinas: Las proteínas son grandes moléculas de aninoácidos, y se encuentran en los alimentos de origen animal y vegetal. Constituyen los principales componentes estructurales de las células y tejidos del cuerpo. Los músculos y los órganos están formados en gran medida por proteínas. Éstas son necesarias para el crecimiento, el desarrollo y el mantenimiento del cuerpo y para reparar y reemplazar los tejidos gastados o dañados, así como para producir enzimas metabólicas y digestivas. Son, además, un componente esencial de ciertas hormonas.  </p>
+                        <p style="text-align: justify;">Carbohidratos: Los carbohidratos son moléculas de azúcar. Junto con las proteínas y las grasas, los carbohidratos son uno de los tres nutrientes principales que se encuentran en alimentos y bebidas.Su cuerpo descompone los carbohidratos en glucosa. La glucosa, o azúcar en la sangre, es la principal fuente de energía para las células, tejidos y órganos del cuerpo. La glucosa puede usarse inmediatamente o almacenarse en el hígado y los músculos para su uso posterior.  </p>
+                        <p style="text-align: justify;">Grasas: Las grasas son un tipo de nutriente que se obtiene de la alimentación. Es esencial comer algunas grasas, aunque también es dañino comer demasiado. Las grasas que usted consume le dan al cuerpo la energía que necesita para trabajar adecuadamente
+                                    
+                        <p style="text-align: justify;">En la tabla a continuación se indica la cantidad de calorias que genera por la cantidad de cierto macronutriente.</p>
+                    </strong>
+                </div>
+            </div>
+
+
+<table class="content-table" border="50" cellpadding = "10" cellspacing = "10" style="align-content:center">
+    <td style="font-weight:bold">ALIMENTO</td>
+    <td style="font-weight:bold">CATEGORIA</td>
+    <td style="font-weight:bold">CANTIDAD</td>
+    <td style="font-weight:bold">CALORIAS</td>
+    {% for i in inf %}
+    <tr>
+        <td>{{i.alimento}}</td>
+        <td>{{i.categoria}}</td>
+        <td>{{i.cantidad}}</td>
+        <td>{{i.calorias}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+
+{% endblock %}
